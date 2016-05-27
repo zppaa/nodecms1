@@ -1,0 +1,161 @@
+<div class="col-xs-12">
+	<p>
+		<a href="#addContentTags" data-toggle="modal">
+			<button class="btn btn-info">
+				<i class="icon-plus-sign-alt bigger-110"></i>
+				添加数据模板
+			</button>
+		</a>
+		<a href="dlepage">
+			<button class="btn btn-info">
+				<i class="icon-trash bigger-110"></i>
+				批量删除
+			</button>
+		</a>
+	</p>
+	<div class="table-responsive">
+		<table id="sample-table-2" class="table table-striped table-bordered table-hover">
+			<thead>
+				<tr>
+					<th class="center">
+						<label>
+							<input type="checkbox" class="ace" />
+							<span class="lbl"></span>
+						</label>
+					</th>
+					<th>名称</th>
+					<th>类型</th>
+					<th class="hidden-480">更新时间</th>
+					<th>发布人</th>
+					<th>属性</th>
+					<th></th>
+				</tr>
+			</thead>
+
+			<tbody>
+				<tr>
+					<td class="center">
+						<label>
+							<input type="checkbox" class="ace" />
+							<span class="lbl"></span>
+						</label>
+					</td>
+
+					<td>
+						<a href="#">新闻</a>
+					</td>
+					<td>news</td>
+					<td class="hidden-480">2016-5-19</td>
+					<td>anan</td>
+
+					<td class="hidden-480">
+						<span class="label label-sm">标题,短标题,描述,内容</span>
+					</td>
+
+					<td>
+						<div class="visible-md visible-lg hidden-sm hidden-xs action-buttons">
+
+							<a class="green" href="#addContentTags" data-toggle="modal">
+								<i class="icon-pencil bigger-130"></i>
+							</a>
+
+							<a class="red" href="#">
+								<i class="icon-trash bigger-130"></i>
+							</a>
+						</div>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+</div>
+<div class="modal fade" id="addContentTags">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">添加数据模板</h4>
+            </div>
+            <div class="modal-body">
+                <form role="form" class="form-horizontal" name="myForm" ng-submit="processForm(myForm.$valid)" novalidate>
+                    <div class="form-group">
+                        <label class="control-label col-sm-4">模板名称</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" name="name" ng-model="formData.name"/ required>
+                            <label for="inputError" class="control-label text-danger" ng-show="myForm.comments.$invalid && !myForm.comments.$pristine"><i class="fa fa-times-circle-o"></i> 模板名称不能为空</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-4">类型</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" name="alias" ng-model="formData.alias" required/>
+                            <label for="inputError" class="control-label text-danger" ng-show="myForm.comments.$invalid && !myForm.comments.$pristine"><i class="fa fa-times-circle-o"></i> 类型不能为空</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-4">标签备注</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" name="comments" ng-model="formData.comments" ng-minlength="1" ng-maxlength="30" required/>
+                            <label for="inputError" class="control-label text-danger" ng-show="myForm.comments.$invalid && !myForm.comments.$pristine"><i class="fa fa-times-circle-o"></i> 备注不能为空</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-4">发布人</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" name="comments" ng-model="formData.comments" ng-minlength="1" ng-maxlength="30" required/>
+                            <label for="inputError" class="control-label text-danger" ng-show="myForm.comments.$invalid && !myForm.comments.$pristine"><i class="fa fa-times-circle-o"></i> 发布人不能为空</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-4">属性</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" name="comments" ng-model="formData.comments" ng-minlength="1" ng-maxlength="30" required/>
+                            <label for="inputError" class="control-label text-danger" ng-show="myForm.comments.$invalid && !myForm.comments.$pristine"><i class="fa fa-times-circle-o"></i> 属性不能为空</label>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary" ng-disabled="myForm.$invalid">提交</button>
+                    </div>
+                </form>
+
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+<script>
+jQuery(function($) {
+				var oTable1 = $('#sample-table-2').dataTable( {
+				"aoColumns": [
+			      { "bSortable": false },
+			      null, null,null, null, null,
+				  { "bSortable": false }
+				] } );
+				
+				
+				$('table th input:checkbox').on('click' , function(){
+					var that = this;
+					$(this).closest('table').find('tr > td:first-child input:checkbox')
+					.each(function(){
+						this.checked = that.checked;
+						$(this).closest('tr').toggleClass('selected');
+					});
+						
+				});
+			
+			
+				$('[data-rel="tooltip"]').tooltip({placement: tooltip_placement});
+				function tooltip_placement(context, source) {
+					var $source = $(source);
+					var $parent = $source.closest('table')
+					var off1 = $parent.offset();
+					var w1 = $parent.width();
+			
+					var off2 = $source.offset();
+					var w2 = $source.width();
+			
+					if( parseInt(off2.left) < parseInt(off1.left) + parseInt(w1 / 2) ) return 'right';
+					return 'left';
+				}
+			})
+
+</script>

@@ -1,6 +1,6 @@
 var mongoose = require("mongoose");
 var shortid = require('shortid');
-var ModelStruts = require('./ModelStruts');
+// var ModelStruts = require('./ModelStruts');
 // 连接字符串格式为mongodb://主机/数据库名
 mongoose.connect('mongodb://localhost/nodecms');
 
@@ -26,6 +26,6 @@ var ModelSchema = new Schema({
 	struts:{type:String, ref: 'ModelStruts'}
 })
 
-var dataModel = mongoose.model('dataModel', ModelSchema);
+var ModelList = mongoose.model('ModelList', ModelSchema);
 
-module.exports = dataModel;
+module.exports = ModelList;

@@ -12,6 +12,7 @@ var settings = require('./settings');
 var routes = require('./routes/index');
 var users = require('./routes/users');
 var models = require('./routes/model');
+var modelStructs = require('./routes/modelStruts');
 
 var app = express();
 
@@ -32,7 +33,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 // app.use('/', routes);
 // app.use('/users', users);
 routes(app);
-models(app)
+models(app);
+modelStructs(app);
+
 app.use(session({
     secret: settings.cookieSecret,
     store: new MongoStore({

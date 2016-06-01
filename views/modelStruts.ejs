@@ -1,0 +1,122 @@
+<div class="col-xs-12">
+	<p>
+		<a href="addModel">
+			<button class="btn btn-info">
+				<i class="icon-plus-sign-alt bigger-110"></i>
+				添加模板属性
+			</button>
+		</a>
+		<a href="javascript:void(0)" id="deletall">
+			<button class="btn btn-info">
+				<i class="icon-trash bigger-110"></i>
+				批量删除
+			</button>
+		</a>
+	</p>
+	<div class="table-responsive">
+		<table id="sample-table-2" class="table table-striped table-bordered table-hover">
+			<thead>
+				<tr>
+					<th class="center">
+						<label>
+							<input type="checkbox" class="ace" />
+							<span class="lbl"></span>
+						</label>
+					</th>
+					<th>名称</th>
+					<th>备注</th>
+					<th class="hidden-480">更新时间</th>
+					<th>发布人</th>
+					<th></th>
+				</tr>
+			</thead>
+
+			<tbody>
+				<!--<% modelstructlist.forEach(function(modelstruct,index){ %>-->
+					<tr>
+						<td class="center">
+							<label>
+								<input type="hidden" value="">
+								<input type="checkbox" class="ace" />
+								<span class="lbl"></span>
+							</label>
+						</td>
+
+						<td>
+							<a href="#"><%= modelstruct.name%></a>
+						</td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td>
+							<div class="visible-md visible-lg hidden-sm hidden-xs action-buttons">
+
+								<a class="green" href="updateModel">
+									<i class="icon-pencil bigger-130"></i>
+								</a>
+
+								<a class="red" href="deleteModel">
+									<i class="icon-trash bigger-130"></i>
+								</a>
+							</div>
+						</td>
+					</tr>
+				<!--<% })%>-->
+			</tbody>
+		</table>
+	</div>
+
+</div>
+
+<script>
+jQuery(function($) {
+
+$("#deletall").on("click",function(){
+	var ids =[];
+	var vals = $("input[type=hidden]");
+	for(var i = 0; i< vals.length; i++ ){
+		var temp = vals[i];
+		if($(temp).next("input").is(':checked')){
+			ids.push($(vals[i]).val())
+		}
+	}
+	$("#deletall").attr("href","deleteModel"+ids)
+})
+	
+
+
+	var oTable1 = $('#sample-table-2').dataTable( {
+	"aoColumns": [
+      { "bSortable": false },
+      null, null,null, null, null,
+	  { "bSortable": false }
+	] } );
+	
+	
+	$('table th input:checkbox').on('click' , function(){
+		var that = this;
+		$(this).closest('table').find('tr > td:first-child input:checkbox')
+		.each(function(){
+			this.checked = that.checked;
+			$(this).closest('tr').toggleClass('selected');
+		});
+			
+	});
+
+
+	$('[data-rel="tooltip"]').tooltip({placement: tooltip_placement});
+	function tooltip_placement(context, source) {
+		var $source = $(source);
+		var $parent = $source.closest('table')
+		var off1 = $parent.offset();
+		var w1 = $parent.width();
+
+		var off2 = $source.offset();
+		var w2 = $source.width();
+
+		if( parseInt(off2.left) < parseInt(off1.left) + parseInt(w1 / 2) ) return 'right';
+		return 'left';
+	}
+})
+
+</script>

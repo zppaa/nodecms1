@@ -1,6 +1,6 @@
 <div class="col-xs-12">
 	<p>
-		<a href="addModel">
+		<a href="addModelStruts">
 			<button class="btn btn-info">
 				<i class="icon-plus-sign-alt bigger-110"></i>
 				添加模板属性
@@ -32,36 +32,36 @@
 			</thead>
 
 			<tbody>
-				<!--<% modelstructlist.forEach(function(modelstruct,index){ %>-->
+				<% list.forEach(function(struct,index){ %>
 					<tr>
 						<td class="center">
 							<label>
-								<input type="hidden" value="">
+								<input type="hidden" value="<%= struct._id %>">
 								<input type="checkbox" class="ace" />
 								<span class="lbl"></span>
 							</label>
 						</td>
 
 						<td>
-							<a href="#"><%= modelstruct.name%></a>
+							<a href="#"><%= struct.name%></a>
 						</td>
-						<td></td>
-						<td></td>
-						<td></td>
+						<td><%= struct.remark%></td>
+						<td><%= struct.date%></td>
+						<td><%= struct.author%></td>
 						<td>
 							<div class="visible-md visible-lg hidden-sm hidden-xs action-buttons">
 
-								<a class="green" href="updateModel">
+								<a class="green" href="updateModelStruts/<%= struct._id %>">
 									<i class="icon-pencil bigger-130"></i>
 								</a>
 
-								<a class="red" href="deleteModel">
+								<a class="red" href="deleteModelStruts/<%= struct._id %>">
 									<i class="icon-trash bigger-130"></i>
 								</a>
 							</div>
 						</td>
 					</tr>
-				<!--<% })%>-->
+				<%})%>
 			</tbody>
 		</table>
 	</div>
@@ -80,7 +80,9 @@ $("#deletall").on("click",function(){
 			ids.push($(vals[i]).val())
 		}
 	}
-	$("#deletall").attr("href","deleteModel"+ids)
+	if(ids.length != 0){
+		$(this).attr("href","deleteModelStruts/"+ids)
+	}
 })
 	
 
@@ -88,7 +90,7 @@ $("#deletall").on("click",function(){
 	var oTable1 = $('#sample-table-2').dataTable( {
 	"aoColumns": [
       { "bSortable": false },
-      null, null,null, null, null,
+      null, null,null, null,
 	  { "bSortable": false }
 	] } );
 	

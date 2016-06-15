@@ -1,0 +1,93 @@
+<div class="col-xs-12">
+	<div>
+		<div class="btn-group">
+			<a href="javascript:void(0);">
+				<button class="btn btn-info">
+					<i class="icon-plus-sign-alt bigger-110"></i>
+					添加数据
+				</button>
+				
+			</a>
+			<button data-toggle="dropdown" id="jstypebtn" class="btn btn-info _btn" type="button" aria-expanded="false">
+		            <span class="caret"></span>
+		            <span class="sr-only">请选择数据类型</span>
+	        </button>
+	        <ul role="menu" class="dropdown-menu">
+                
+            </ul>
+		</div>
+		<a href="javascript:void(0);">
+			<button class="btn btn-info">
+				<i class="icon-trash bigger-110"></i>
+				批量删除
+			</button>
+		</a>
+	</div>
+	<div class="table-responsive" id='js-data-table'>
+		<table id="sample-table-2" class="table table-striped table-bordered table-hover">
+			<thead>
+				<tr>
+					<th class="center">
+						<label>
+							<input type="checkbox" class="ace" />
+							<span class="lbl"></span>
+						</label>
+					</th>
+					<th>标题</th>
+					<th>更新时间</th>
+					<th>发布人</th>
+					<th></th>
+				</tr>
+			</thead>
+
+			<tbody>
+				
+				<tr>
+					<td class="center">
+						<label>
+							<input type="hidden" value="">
+							<input type="checkbox" class="ace" />
+							<span class="lbl"></span>
+						</label>
+					</td>
+
+					<td>
+						<a href="#"></a>
+					</td>
+					<td></td>
+					<td></td>
+					<td>
+						<div class="visible-md visible-lg hidden-sm hidden-xs action-buttons">
+
+							<a class="green" href="">
+								<i class="icon-pencil bigger-130"></i>
+							</a>
+
+							<a class="red" href="">
+								<i class="icon-trash bigger-130"></i>
+							</a>
+						</div>
+					</td>
+				</tr>
+				
+			</tbody>
+		</table>
+	</div>
+
+</div>
+<script src="/javascripts/datalist.js"></script>
+<script>
+	$("#deletall").on("click",function(){
+		var ids =[];
+		var vals = $("input[type=hidden]");
+		for(var i = 0; i< vals.length; i++ ){
+			var temp = vals[i];
+			if($(temp).next("input").is(':checked')){
+				ids.push($(vals[i]).val())
+			}
+		}
+		if(ids.length != 0){
+			$(this).attr("href","deleteModelStruts/"+ids)
+		}
+	})
+</script>

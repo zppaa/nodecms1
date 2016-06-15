@@ -21,7 +21,7 @@
 10 error There is likely additional logging output above.
 11 error System Windows_NT 6.1.7601
 12 error command "F:\\AppCan\\AppCanStudioPersonalV3.3\\HDK\\emulator\\mas\\node.exe" "F:\\AppCan\\AppCanStudioPersonalV3.3\\HDK\\emulator\\mas\\node_modules\\npm\\bin\\npm-cli.js" "start"
-13 error cwd E:\my\nodecms
+13 error cwd E:\my\nodecms1
 14 error node -v v0.10.38
 15 error npm -v 1.4.3
 16 error code ELIFECYCLE

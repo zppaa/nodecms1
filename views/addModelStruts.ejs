@@ -1,40 +1,39 @@
 <div class="row">
 	<div class="col-xs-12">
 		<!-- PAGE CONTENT BEGINS -->
-		<% if (oneModelStruct){ %>
+		<% if (oneModel){ %>
 			<form class="form-horizontal" method="POST" action="/updateModelStruts" role="form">
-				<input type="hidden", name="oneModelStruct[_id]", value="<%= oneModelStruct._id%>" />
+				<input type="hidden", name="oneModel[_id]", value="<%= oneModel._id%>" />
 				<div class="form-group">
 					<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 名称 </label>
 
 					<div class="col-sm-9">
-						<input type="text" name="oneModelStruct[name]" value="<%= oneModelStruct.name%>" id="form-field-1" placeholder="名称" class="col-xs-10 col-sm-5" />
+						<input type="text" name="oneModel[name]" value="<%= oneModel.name%>" id="form-field-1" placeholder="名称" class="col-xs-10 col-sm-5" />
 					</div>
 				</div>
 
 				<div class="space-4"></div>
 				
 				<div class="form-group">
-					<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 备注 </label>
+					<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 备注(英文名称) </label>
 
 					<div class="col-sm-9">
-						<input type="text" name="oneModelStruct[remark]" value="<%= oneModelStruct.remark%>" id="form-field-1" placeholder="备注" class="col-xs-10 col-sm-5" />
+						<input type="text" name="oneModel[remark]" value="<%= oneModel.remark%>" id="form-field-1" placeholder="备注" class="col-xs-10 col-sm-5" />
 					</div>
 				</div>
 
 				<div class="space-4"></div>
+				<input type="hidden" id="time" name="oneModel[date]" vulue="<%= oneModel.date%>" />
 
 				<div class="form-group">
 					<label class="col-sm-3 control-label no-padding-right" for="form-field-2"> 发布人 </label>
 
 					<div class="col-sm-9">
-						<input type="text" name="oneModelStruct[author]" value="<%= oneModelStruct.author%>" id="form-field-2" placeholder="发布人" class="col-xs-10 col-sm-5" />
+						<input type="text" name="oneModel[author]" value="<%= oneModel.author%>" id="form-field-2" placeholder="发布人" class="col-xs-10 col-sm-5" />
 						
 					</div>
 				</div>
-				<div class="space-4"></div>
 				
-				<input type="hidden" id="time" name="oneModelStruct[date]" vulue="<%= oneModelStruct.date%>" />
 				<div class="clearfix form-actions">
 					<div class="col-md-offset-3 col-md-9">
 						<button class="btn btn-info" type="submit">
@@ -56,17 +55,17 @@
 					<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 名称 </label>
 
 					<div class="col-sm-9">
-						<input type="text" name="ModelStrutsList[name]" id="form-field-1" placeholder="名称" class="col-xs-10 col-sm-5" />
+						<input type="text" name="_list[name]" id="form-field-1" placeholder="名称" class="col-xs-10 col-sm-5" />
 					</div>
 				</div>
 
 				<div class="space-4"></div>
 
 				<div class="form-group">
-					<label class="col-sm-3 control-label no-padding-right" for="form-field-2"> 备注 </label>
+					<label class="col-sm-3 control-label no-padding-right" for="form-field-2"> 备注(英文名称) </label>
 
 					<div class="col-sm-9">
-						<input type="text" name="ModelStrutsList[type]" id="form-field-2" placeholder="备注" class="col-xs-10 col-sm-5" />
+						<input type="text" name="_list[remark]" id="form-field-2" placeholder="备注" class="col-xs-10 col-sm-5" />
 						
 					</div>
 				</div>
@@ -74,11 +73,11 @@
 					<label class="col-sm-3 control-label no-padding-right" for="form-field-2"> 发布人 </label>
 
 					<div class="col-sm-9">
-						<input type="text" name="ModelStrutsList[author]" id="form-field-2" placeholder="发布人" class="col-xs-10 col-sm-5" />
+						<input type="text" name="_list[author]" id="form-field-2" placeholder="发布人" class="col-xs-10 col-sm-5" />
 						
 					</div>
 				</div>
-				<input type="hidden" id="time" name="ModelStrutsList[date]" vulue="" />
+				<input type="hidden" id="time" name="_list[date]" vulue="" />
 				<div class="clearfix form-actions">
 					<div class="col-md-offset-3 col-md-9">
 						<button class="btn btn-info" type="submit">

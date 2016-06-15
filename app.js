@@ -7,14 +7,18 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var partials = require('express-partials');
 var MongoStore = require('connect-mongo')(session);
+var log = require('./log');
+
 var settings = require('./settings');
 
 var routes = require('./routes/index');
-var users = require('./routes/users');
 var models = require('./routes/model');
 var modelStructs = require('./routes/modelStruts');
-
+var modelType = require('./routes/modelType');
+var data = require('./routes/dataList');
 var app = express();
+
+log.use(app)
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -27,14 +31,14 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+//app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static('public'));
 
-
-// app.use('/', routes);
-// app.use('/users', users);
 routes(app);
-models(app);
 modelStructs(app);
+modelType(app);
+models(app);
+data(app);
 
 app.use(session({
     secret: settings.cookieSecret,

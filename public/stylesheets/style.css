@@ -1,8 +1,14 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+textarea, input[type="text"], input[type="password"], input[type="datetime"], input[type="datetime-local"], input[type="date"], input[type="month"], input[type="time"], input[type="week"], input[type="number"], input[type="email"], input[type="url"], input[type="search"], input[type="tel"], input[type="color"]{
+	line-height: 2.2;
 }
-
-a {
-  color: #00B7FF;
+.btn-group>.btn{
+	float: right;
+}
+.btn-group>._btn{
+	line-height:24px;
+	border-left:1px solid #6094B4;
+}
+.btn-group>.btn>.caret{
+	margin-top: 0;
+	border-bottom:0;
 }

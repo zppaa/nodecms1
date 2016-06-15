@@ -1,25 +1,29 @@
-var ModelStrutsList = require('../models/Modelstruts.js');
+var public = require('./public.js');
+var ModelStrutsList = require('../models/ModelStruts.js');
+
 module.exports = function(app){
-	app.get('/addModelStruts',function(req, res){
-		res.render('/addModelStruts',{ title: '添加数据模板属性',oneModelStruct:'' });
+	
+	app.get('/addModelStruts',function(req, res, next){
+		res.render('addModelStruts',{ title: '添加数据模板属性',oneModel:''});
 	});
 
 	//添加数据模板属性
-	// app.post('/addModelStruts',function(req, res){
-	// 	var modelstrutslist = req.body.modelstrutsList;
-	// 	if(!modelstrutslist){
-	// 		console.log(modelstrutslist);
-	// 		return;
-	// 	}
-	// 	modelstrutslist = new ModelStrutsList(modelstrutslist);
+	app.post('/addModelStruts',function(req, res){
+		public.save(req,res,'modelStruts',ModelStrutsList);
+	});
 
-	// 	modelstrutslist.save(function(err){
-	// 		if(err){
-	// 			console.log("保存失败")
-	// 			return res.redirect('/')
-	// 		}
-	// 		console.log("保存成功")
-	// 		return res.redirect('/modelStruts')
-	// 	})
-	// })
+	//修改数据模板属性
+	app.get('/updateModelStruts/:id',function(req,res){
+		public.modify(req,res,'addModelStruts',ModelStrutsList)
+	});
+
+	//更新数据模板属性
+	app.post('/updateModelStruts',function(req, res){
+		public.update(req,res,'modelStruts',ModelStrutsList)
+	});
+
+	//删除数据模板属性
+	app.get('/deleteModelStruts/:id',function(req, res){
+		public.delete(req,res,'/modelStruts',ModelStrutsList)
+	});
 }

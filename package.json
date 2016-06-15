@@ -18,6 +18,8 @@
     "connect-mongo": "^0.8.2",
     "mongoose": "^4.4.19",
     "connect-flash": "^0.1.1",
-    "shortid": "^2.2.6"
+    "shortid": "^2.2.6",
+    "fs": "0.0.2",
+    "log4js": "^0.6.36"
   }
 }

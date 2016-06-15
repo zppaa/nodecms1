@@ -1,0 +1,61 @@
+<div class="row">
+	<div class="col-xs-12">
+		<!-- PAGE CONTENT BEGINS -->
+			<% if (oneModel){ %>
+			<form class="form-horizontal" method="POST" action="/updateModelType" role="form">
+				<input type="hidden", name="oneModel[_id]", value="<%= oneModel._id%>" />
+				<div class="form-group">
+					<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 名称 </label>
+
+					<div class="col-sm-9">
+						<input type="text" name="oneModel[name]" value="<%= oneModel.name%>" id="form-field-1" placeholder="名称" class="col-xs-10 col-sm-5" />
+					</div>
+				</div>
+				<input type="hidden" id="time" name="oneModel[date]" vulue="<%= oneModel.date%>" />
+				<div class="clearfix form-actions">
+					<div class="col-md-offset-3 col-md-9">
+						<button class="btn btn-info" type="submit">
+							<i class="icon-ok bigger-110"></i>
+							修改
+						</button>
+
+						&nbsp; &nbsp; &nbsp;
+						<button class="btn" type="reset">
+							<i class="icon-undo bigger-110"></i>
+							重置
+						</button>
+					</div>
+				</div>
+			</form>
+		<% } else { %>
+			<form class="form-horizontal" method="POST" action="/addModelType" role="form">
+				<div class="form-group">
+					<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 类型名称 </label>
+
+					<div class="col-sm-9">
+						<input type="text" name="_list[name]" id="form-field-1" placeholder="名称" class="col-xs-10 col-sm-5" />
+					</div>
+				</div>
+
+				<div class="space-4"></div>
+				<input type="hidden" id="author" name="_list[author]" vulue="anan" />
+				<input type="hidden" id="time" name="
+				" vulue="" />
+				<div class="clearfix form-actions">
+					<div class="col-md-offset-3 col-md-9">
+						<button class="btn btn-info" type="submit">
+							<i class="icon-ok bigger-110"></i>
+							提交
+						</button>
+
+						&nbsp; &nbsp; &nbsp;
+						<button class="btn" type="reset">
+							<i class="icon-undo bigger-110"></i>
+							重置
+						</button>
+					</div>
+				</div>
+			</form>
+		<% }%>
+	</div><!-- /.col -->
+</div><!-- /.row -->

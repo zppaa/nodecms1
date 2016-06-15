@@ -18,8 +18,13 @@
 					<label class="col-sm-3 control-label no-padding-right" for="form-field-2"> 类型 </label>
 
 					<div class="col-sm-9">
-						<input type="text" name="oneModel[type]" value="<%= oneModel.type%>" id="form-field-2" placeholder="类型" class="col-xs-10 col-sm-5" />
-						
+						<input type="text" name="oneModel[type]" value="<%= oneModel.type%>" id="tagSel" placeholder="类型" class="col-xs-10 col-sm-5" onclick="showTagsMenu('/modelType','tagSel','menuContent','tagsTree');" />
+						<div class="input-group-btn">
+						    <button type="button" class="btn btn-default dropdown-toggle"  id="menuBtn" onclick="showTagsMenu('/modelType','tagSel','menuContent','tagsTree'); return false;">选择 <span class="fa icon-caret-down"></span></button>
+						    <div id="menuContent" class="menuContent dropdown-menu" style="display:none; position: absolute;z-index: 999">
+						        <ul class="ztree" id="tagsTree" style="margin-top: 0;width: 180px;max-height: 200px;overflow-y: auto;padding: 10px;background: #fff;"></ul>
+						    </div>
+						</div>
 					</div>
 				</div>
 				<div class="form-group">
@@ -35,8 +40,14 @@
 					<label class="col-sm-3 control-label no-padding-right" for="form-field-2"> 结构 </label>
 
 					<div class="col-sm-9">
-						<textarea id="form-field-11" name="oneModel[struts]" value="<%= oneModel.struts%>" class="autosize-transition col-xs-10 col-sm-5" style="overflow: hidden; word-wrap: break-word; resize: horizontal; height: 132px;"><%= oneModel.struts%></textarea>
 						
+						<input type="text" name="oneModel[struts]" value="<%= oneModel.struts%>"  id="tagSel1" placeholder="结构属性" class="col-xs-10 col-sm-5" onclick="showTagsMenu('/modelStruts','tagSel1','menuContent1','tagsTree1');"/>
+						<div class="input-group-btn">
+						    <button type="button" class="btn btn-default dropdown-toggle"  id="menuBtn1" onclick="showTagsMenu('/modelStruts','tagSel1','menuContent1','tagsTree1'); return false;">选择 <span class="fa icon-caret-down"></span></button>
+						    <div id="menuContent1" class="menuContent dropdown-menu" style="display:none; position: absolute;z-index: 999">
+						        <ul class="ztree" id="tagsTree1" style="margin-top: 0;width: 180px;max-height: 200px;overflow-y: auto;padding: 10px;background: #fff;"></ul>
+						    </div>
+						</div>
 					</div>
 					
 				</div>
@@ -62,7 +73,7 @@
 					<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 名称 </label>
 
 					<div class="col-sm-9">
-						<input type="text" name="modelList[name]" id="form-field-1" placeholder="名称" class="col-xs-10 col-sm-5" />
+						<input type="text" name="_list[name]" id="form-field-1" placeholder="名称" class="col-xs-10 col-sm-5" />
 					</div>
 				</div>
 
@@ -72,15 +83,20 @@
 					<label class="col-sm-3 control-label no-padding-right" for="form-field-2"> 类型 </label>
 
 					<div class="col-sm-9">
-						<input type="text" name="modelList[type]" id="form-field-2" placeholder="类型" class="col-xs-10 col-sm-5" />
-						
+						<input type="text" name="_list[type]" id="tagSel" placeholder="类型" class="col-xs-10 col-sm-5" onclick="showTagsMenu('/modelType','tagSel','menuContent','tagsTree');"/>
+						<div class="input-group-btn">
+						    <button type="button" class="btn btn-default dropdown-toggle"  id="menuBtn" onclick="showTagsMenu('/modelType','tagSel','menuContent','tagsTree'); return false;">选择 <span class="fa icon-caret-down"></span></button>
+						    <div id="menuContent" class="menuContent dropdown-menu" style="display:none; position: absolute;z-index: 999">
+						        <ul class="ztree" id="tagsTree" style="margin-top: 0;width: 180px;max-height: 200px;overflow-y: auto;padding: 10px;background: #fff;"></ul>
+						    </div>
+						</div>
 					</div>
 				</div>
 				<div class="form-group">
 					<label class="col-sm-3 control-label no-padding-right" for="form-field-2"> 发布人 </label>
 
 					<div class="col-sm-9">
-						<input type="text" name="modelList[author]" id="form-field-2" placeholder="发布人" class="col-xs-10 col-sm-5" />
+						<input type="text" name="_list[author]" id="form-field-2" placeholder="发布人" class="col-xs-10 col-sm-5" />
 						
 					</div>
 				</div>
@@ -89,12 +105,17 @@
 					<label class="col-sm-3 control-label no-padding-right" for="form-field-2"> 结构 </label>
 
 					<div class="col-sm-9">
-						<textarea id="form-field-11" name="modelList[struts]" class="autosize-transition col-xs-10 col-sm-5" style="overflow: hidden; word-wrap: break-word; resize: horizontal; height: 132px;"></textarea>
-						
+						<input type="text" name="_list[struts]" id="tagSel1" placeholder="结构属性" class="col-xs-10 col-sm-5" onclick="showTagsMenu('/modelStruts','tagSel1','menuContent1','tagsTree1');"/>
+						<div class="input-group-btn">
+						    <button type="button" class="btn btn-default dropdown-toggle"  id="menuBtn1" onclick="showTagsMenu('/modelStruts','tagSel1','menuContent1','tagsTree1'); return false;">选择 <span class="fa icon-caret-down"></span></button>
+						    <div id="menuContent1" class="menuContent dropdown-menu" style="display:none; position: absolute;z-index: 999">
+						        <ul class="ztree" id="tagsTree1" style="margin-top: 0;width: 180px;max-height: 200px;overflow-y: auto;padding: 10px;background: #fff;"></ul>
+						    </div>
+						</div>
 					</div>
 					
 				</div>
-				<input type="hidden" id="time" name="modelList[date]" vulue="" />
+				<input type="hidden" id="time" name="_list[date]" vulue="" />
 				<div class="clearfix form-actions">
 					<div class="col-md-offset-3 col-md-9">
 						<button class="btn btn-info" type="submit">

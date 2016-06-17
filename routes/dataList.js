@@ -1,9 +1,8 @@
 var public = require('./public.js');
 var DataList = require('../models/DataList.js');
-// DataList = DataList.updateModel();
-console.log(DataList);
+
 module.exports = function(app){
-	app.get('/addData/type=:type',function(req,res,next){
+	app.get('/addData/:type',function(req,res,next){
 		res.render('addData',{title:'添加数据',oneModel:''});
 	});
 

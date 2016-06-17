@@ -39,6 +39,7 @@ modelStructs(app);
 modelType(app);
 models(app);
 data(app);
+// app.use('/addData',data);
 
 app.use(session({
     secret: settings.cookieSecret,

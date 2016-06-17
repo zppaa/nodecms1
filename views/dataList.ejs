@@ -41,35 +41,35 @@
 			</thead>
 
 			<tbody>
-				
+				<% list.forEach(function(model,index){ %>
 				<tr>
 					<td class="center">
 						<label>
-							<input type="hidden" value="">
+							<input type="hidden" value="<%= model._id %>">
 							<input type="checkbox" class="ace" />
 							<span class="lbl"></span>
 						</label>
 					</td>
 
 					<td>
-						<a href="#"></a>
+						<a href="#"><%= model.title%></a>
 					</td>
-					<td></td>
-					<td></td>
+					<td><%= model.date%></td>
+					<td><%= model.author%></td>
 					<td>
 						<div class="visible-md visible-lg hidden-sm hidden-xs action-buttons">
 
-							<a class="green" href="">
+							<a class="green" href="updateData/<%= model._id %>">
 								<i class="icon-pencil bigger-130"></i>
 							</a>
 
-							<a class="red" href="">
+							<a class="red" href="deleteData/<%= model._id %>">
 								<i class="icon-trash bigger-130"></i>
 							</a>
 						</div>
 					</td>
 				</tr>
-				
+				<% })%>
 			</tbody>
 		</table>
 	</div>

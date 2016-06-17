@@ -14,6 +14,10 @@ var ModelStrutsSchema = new Schema({
 	
 })
 
-var ModelStrutsList = mongoose.model('ModelStrutsList',ModelStrutsSchema);
+ModelStrutsSchema.statics.findStruts = function(obj){
+    var that = this;
+    return that.find();
+}
 
+var ModelStrutsList = mongoose.model('ModelStrutsList',ModelStrutsSchema);
 module.exports = ModelStrutsList;

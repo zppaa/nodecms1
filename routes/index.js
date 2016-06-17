@@ -2,6 +2,7 @@ var publicFn = require('./public');
 var ModelList = require('../models/Model.js');
 var ModelStrutsList = require('../models/ModelStruts.js');
 var ModelTypeList = require('../models/ModelType.js');
+var DataList = require('../models/DataList.js');
 /* GET home page. */
 module.exports = function(app){
 	app.get('/', function(req, res, next) {
@@ -9,7 +10,8 @@ module.exports = function(app){
 	});
 
 	app.get('/dataList',function(req, res, next){
-		res.render('dataList',{title:'数据'})
+		//res.render('dataList',{title:'数据'})
+		publicFn.initList(res,"dataList",DataList,"数据");
 	})
 	
 	app.get('/modelStruts', function(req, res, next) {

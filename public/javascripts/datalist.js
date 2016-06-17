@@ -23,7 +23,7 @@ function getDataType(){
 				var str ='';
 				for(var i = 0; i < res.length; i++){
 					var temp = res[i].type;
-					str += '<li><a href="/addData/type='+temp+'">'+temp+'</a></li>'
+					str += '<li><a href="/addData/'+temp+'">'+temp+'</a></li>'
 				}
 				$(".dropdown-menu").append(str);
 			}

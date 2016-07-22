@@ -66,23 +66,19 @@
 
 <script>
 jQuery(function($) {
-
-$("#deletall").on("click",function(){
-	var ids =[];
-	var vals = $("input[type=hidden]");
-	for(var i = 0; i< vals.length; i++ ){
-		var temp = vals[i];
-		if($(temp).next("input").is(':checked')){
-			ids.push($(vals[i]).val())
-		}
-	}
-	if(ids.length != 0){
-		$(this).attr("href","deleteModelType/"+ids)
-	}
-})
-	
-
-
+	$("#deletall").on("click",function(){
+        var ids =[];
+        var vals = $("input[type=hidden]");
+        for(var i = 0; i< vals.length; i++ ){
+            var temp = vals[i];
+            if($(temp).next("input").is(':checked')){
+                ids.push($(vals[i]).val())
+            }
+        }
+        if(ids.length != 0){
+            $(this).attr("href","deleteModelType/"+ids)
+        }
+    });
 	var oTable1 = $('#sample-table-2').dataTable( {
 	"aoColumns": [
       { "bSortable": false },

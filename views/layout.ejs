@@ -474,14 +474,7 @@
                   <li class="active">控制台</li>
                 </ul><!-- .breadcrumb -->
 
-                <div class="nav-search" id="nav-search">
-                  <form class="form-search">
-                    <span class="input-icon">
-                      <input type="text" placeholder="Search ..." class="nav-search-input" id="nav-search-input" autocomplete="off" />
-                      <i class="icon-search nav-search-icon"></i>
-                    </span>
-                  </form>
-                </div><!-- #nav-search -->
+                
               </div>
 
               <div class="page-content">
@@ -545,13 +538,19 @@
     <!-- inline scripts related to this page -->
 
     <script type="text/javascript">
-    function liClick(){
-      $(".submenu li").on("click",function(){
-          $(this).toggleClass("active");
-          $(this).parent().parent().toggleClass("active");
-      })
-    }
-    liClick()
+    $(function(){
+      var a = $(".submenu li a");
+      var pathname = window.location.pathname;
+      for(var i = 0; i < a.length; i++){
+        var href = $(a[i]).attr("href");
+        if(pathname == href){
+          $(a[i]).parent("li").addClass("active");
+          $(a[i]).parent("li").parent().parent().addClass("active")
+        }
+      }
+      
+    })
+    
     
     </script>
   <div style="display:none"><script src='http://v7.cnzz.com/stat.php?id=155540&web_id=155540' language='JavaScript' charset='gb2312'></script></div>

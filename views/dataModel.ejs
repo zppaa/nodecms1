@@ -1,3 +1,11 @@
+<div class="nav-search" id="nav-search">
+                  <form class="form-search">
+                    <span class="input-icon">
+                      <input type="text" placeholder="Search ..." class="nav-search-input" id="nav-search-input" autocomplete="off" />
+                      <i class="icon-search nav-search-icon"></i>
+                    </span>
+                  </form>
+                </div><!-- #nav-search -->
 <div class="col-xs-12">
 	<p>
 		<a href="addModel">
@@ -14,7 +22,7 @@
 		</a>
 	</p>
 	<div class="table-responsive">
-		<table id="sample-table-2" class="table table-striped table-bordered table-hover">
+			<table id="sample-table-2" class="table table-striped table-bordered table-hover">
 			<thead>
 				<tr>
 					<th class="center">
@@ -76,23 +84,19 @@
 
 <script>
 jQuery(function($) {
-
 	$("#deletall").on("click",function(){
-		var ids =[];
-		var vals = $("input[type=hidden]");
-		for(var i = 0; i< vals.length; i++ ){
-			var temp = vals[i];
-			if($(temp).next("input").is(':checked')){
-				ids.push($(vals[i]).val())
-			}
-		}
-		if(ids.length != 0){
-			$(this).attr("href","deleteModel/"+ids)
-		}
-	})
-	
-
-
+        var ids =[];
+        var vals = $("input[type=hidden]");
+        for(var i = 0; i< vals.length; i++ ){
+            var temp = vals[i];
+            if($(temp).next("input").is(':checked')){
+                ids.push($(vals[i]).val())
+            }
+        }
+        if(ids.length != 0){
+            $(this).attr("href","deleteModel/"+ids)
+        }
+    });
 	var oTable1 = $('#sample-table-2').dataTable( {
 	"aoColumns": [
       { "bSortable": false },

@@ -1,12 +1,13 @@
 <div class="row">
 	<div class="col-xs-12">
 		<!-- PAGE CONTENT BEGINS -->
+			<input type="hidden" id="id" name="oneModel[_id]" vulue="<%= oneModel._id%>" />
 			<% if (oneModel){ %>
 			<form class="form-horizontal" id="js-updateForm" data-value="<%= oneModel%>" method="POST" action="/updateData" role="form">
 				<input type="hidden" id="time" name="oneModel[date]" vulue="" />
 				<div class="clearfix form-actions">
 					<div class="col-md-offset-3 col-md-9">
-						<button class="btn btn-info" type="submit">
+						<button class ="btn btn-info" type="submit">
 							<i class="icon-ok bigger-110"></i>
 							提交
 						</button>

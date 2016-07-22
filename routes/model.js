@@ -15,6 +15,7 @@ module.exports = function(app){
 		public.modify(req,res,'addModel',ModelList)
 	});
 
+
 	//更新数据模型
 	app.post('/updateModel',function(req, res){
 		public.update(req,res,'dataModel',ModelList)

@@ -1,4 +1,22 @@
 //获取模型结构属性
+$(function(){
+    $("#deletall").on("click",function(){
+        var ids =[];
+        var vals = $("input[type=hidden]");
+        for(var i = 0; i< vals.length; i++ ){
+            var temp = vals[i];
+            if($(temp).next("input").is(':checked')){
+                ids.push($(vals[i]).val())
+            }
+        }
+        if(ids.length != 0){
+            $(this).attr("href","deleteModelStruts/"+ids)
+        }
+    });
+
+    
+    
+})
 function getTags(url,id,tagsTree){
     $.ajax({
         type:'post',

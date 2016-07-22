@@ -33,13 +33,13 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 //app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static('public'));
-
-routes(app);
+app.use('/',routes);
+// routes(app);
 modelStructs(app);
 modelType(app);
 models(app);
-data(app);
-// app.use('/addData',data);
+//data(app);
+app.use('/',data);
 
 app.use(session({
     secret: settings.cookieSecret,

@@ -11,6 +11,9 @@ var DataSchema = require('../models/DataList.js');
 router.get('/', function(req, res, next) {
   	res.render('index', { title: '首页' });
 });
+router.get('/contentTempEdit', function(req, res, next) {
+  	res.render('contentTempEdit', { title: '模板编辑' });
+});
 router.get('/modelStruts', function(req, res, next) {
 	publicFn.initList(res,"modelStruts",ModelStrutsList,"数据模型属性");
 });

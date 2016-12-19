@@ -135,7 +135,6 @@ function changeToTreeJson(result,key,oldValue){
                 }
             }
             treeItem = new TagsTree(result[i]._id,result[i].name,checkState);
-
         }else if(key === "tempTree"){
             treeItem = new TempsTree(result[i]._id,result[i].name,result[i].forder);
         }else if(key === "tempForderTree"){

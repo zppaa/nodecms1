@@ -12,9 +12,10 @@ public.initList = function(res,route,list, title){
 
 //添加数据
 public.save = function(req,res,route,list){
+    console.log('11111111111111111111'+req.body)
     var _list = req.body._list;
+
     if(!_list){
-        console.log(_list);
         return;
     }
     _list = list(_list);

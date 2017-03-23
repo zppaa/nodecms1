@@ -7,10 +7,19 @@ var ModelList = require('../models/Model.js');
 var ModelStrutsList = require('../models/ModelStruts.js');
 var ModelTypeList = require('../models/ModelType.js');
 var DataSchema = require('../models/DataList.js');
+var User = require('./users.js')
 /* GET home page. */
-router.get('/', function(req, res, next) {
+router.get('/index', function(req, res, next) {
   	res.render('index', { title: '首页' });
 });
+
+//user
+router.get('/user/login', User.login);
+router.get('/user/register',User.register);
+router.post('/user/signup',User.signup);
+router.post('/user/signin',User.signin);
+
+
 router.get('/contentTempEdit', function(req, res, next) {
   	res.render('contentTempEdit', { title: '模板编辑' });
 });

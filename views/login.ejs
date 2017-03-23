@@ -1,0 +1,28 @@
+<link href="/assets/css/bootstrap.min.css" rel="stylesheet" />
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<div class="container">
+	<div class="row">
+		<div class="col-xs-3"></div>
+		<div class="col-xs-5">
+			<div class="page-header">
+				<h1><%= title %></h1>
+				<form action="./signin" method="post">
+					<div class="modal-body">
+						<div class="form-group">
+							<label for="signinName">用户名</label>
+							<input type="text" id="signinName" class="form-control" name="user[name]">
+						</div>
+						<div class="form-group">
+							<label for="signinPassword">密码</label>
+							<input type="text" id="signinPassword" class="form-control" name="user[password]">
+						</div>
+					</div>
+					<div class="nodel-footer">
+						<button class="btn btn-success" type="submit">提交</button>
+						<a href="./register" class="navbar-link">注册</a>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+<div>

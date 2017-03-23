@@ -1,5 +1,4 @@
 var User = require('../models/user')
-
 exports.login = function(req, res, next){
 	res.render('login',{
 		title:'登录页面',
@@ -30,12 +29,25 @@ exports.signup = function(req, res){
 				if(err){
 					console.log(err)
 				}
-				res.redirect('/user/login');
+				res.redirect('/user/userList');
 			})
 		}
 	})
 	
 }
+
+exports.userList = function(req, res){
+	User.find(function(err, users){
+		if(err){
+			console.log(err)
+		}
+		res.render('userList',{
+			title:'用户列表',
+			users:users
+		})
+	})
+}
+
 exports.signin = function(req, res){
 	var _user = req.body.user;
 	var name = _user.name
@@ -68,4 +80,26 @@ exports.signin = function(req, res){
 exports.logout = function(req, res){
 	delete req.session.user
 	return res.redirect('/index');
+}
+
+//midware for user
+exports.signinRequired = function(req, res, next){
+	var user = req.session.user;
+	console.log(22222222222222222)
+	console.log(user)
+	if(!user){
+		console.log('请先登录')
+		return res.redirect('./login')
+	}
+	next()
+}
+
+exports.adminRequired = function(req, res, next){
+	var user = req.session.user;
+	console.log('1111111111111111111111111')
+	console.log(user.role)
+	if(user.role <= 10){ 
+		return res.redirect('./login')
+	}
+	next()
 }

@@ -37,14 +37,7 @@ app.use(session({
         db: settings.db
     })
 }));
-//pre handle user
-app.use(function(req, res, next){
-  var user = req.session.user;
-  if(user){
-    res.locals.user = user;
-  } 
-  next()
-})
+
 //app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static('public'));
 app.use('/',routes);

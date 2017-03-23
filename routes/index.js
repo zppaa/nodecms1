@@ -9,6 +9,15 @@ var ModelTypeList = require('../models/ModelType.js');
 var DataSchema = require('../models/DataList.js');
 var User = require('./users.js')
 /* GET home page. */
+//pre handle user
+router.use(function(req, res, next){
+  var user = req.session.user;
+  if(user){
+    res.locals.user = user;
+  } 
+  next()
+})
+
 router.get('/index', function(req, res, next) {
 	
   	res.render('index', { 
@@ -22,6 +31,7 @@ router.get('/user/register',User.register);
 router.post('/user/signup',User.signup);
 router.post('/user/signin',User.signin);
 router.get('/user/logout',User.logout);
+router.get('/user/userList', User.signinRequired, User.adminRequired, User.userList);
 
 router.get('/contentTempEdit', function(req, res, next) {
   	res.render('contentTempEdit', { title: '模板编辑' });

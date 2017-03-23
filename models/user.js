@@ -16,7 +16,17 @@ var UserSchema = new Schema({
     password:{
         unique:true,
         type:String
-    }
+    },
+    //0:nomal
+    //1:verfied user
+    //2:professonal user
+    //> 10 admin
+    //> 50 spuer admin
+    role:{
+        type:Number,
+        default:0
+    },
+    date: { type: Date, default: Date.now },
 
 });
 UserSchema.pre('save',function(next){

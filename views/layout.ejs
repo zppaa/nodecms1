@@ -328,43 +328,55 @@
                 </li>
               </ul>
             </li>
+            <!-- 用户登录状态 -->
+            <% if (!locals.user){ %>
+              <li class="light-blue">
+                <a href="/user/login" class="pull-left">
+                  <span>登录</span>
+                </a>
+                <a href="/user/register" class="pull-left">
+                  <span>注册</span>
+                </a>
+               
+              </li>
+            <% } else{%>
+              <li class="light-blue">
+                <a data-toggle="dropdown" href="#" class="dropdown-toggle">
+                  <img class="nav-user-photo" src="/assets/avatars/user.jpg" alt="Jason's Photo" />
+                  <span class="user-info">
+                    <small>欢迎光临,</small>
+                    <%= user.name%>
+                  </span>
 
-            <li class="light-blue">
-              <a data-toggle="dropdown" href="#" class="dropdown-toggle">
-                <img class="nav-user-photo" src="/assets/avatars/user.jpg" alt="Jason's Photo" />
-                <span class="user-info">
-                  <small>欢迎光临,</small>
-                  Jason
-                </span>
+                  <i class="icon-caret-down"></i>
+                </a>
 
-                <i class="icon-caret-down"></i>
-              </a>
+                <ul class="user-menu pull-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
+                  <li>
+                    <a href="#">
+                      <i class="icon-cog"></i>
+                      设置
+                    </a>
+                  </li>
 
-              <ul class="user-menu pull-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
-                <li>
-                  <a href="#">
-                    <i class="icon-cog"></i>
-                    设置
-                  </a>
-                </li>
+                  <li>
+                    <a href="#">
+                      <i class="icon-user"></i>
+                      个人资料
+                    </a>
+                  </li>
 
-                <li>
-                  <a href="#">
-                    <i class="icon-user"></i>
-                    个人资料
-                  </a>
-                </li>
+                  <li class="divider"></li>
 
-                <li class="divider"></li>
-
-                <li>
-                  <a href="#">
-                    <i class="icon-off"></i>
-                    退出
-                  </a>
-                </li>
-              </ul>
-            </li>
+                  <li>
+                    <a href="/user/logout">
+                      <i class="icon-off"></i>
+                      退出
+                    </a>
+                  </li>
+                </ul>
+              </li>
+            <% } %>
           </ul><!-- /.ace-nav -->
         </div><!-- /.navbar-header -->
       </div><!-- /.container -->

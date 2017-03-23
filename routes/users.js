@@ -1,4 +1,5 @@
 var User = require('../models/user')
+
 exports.login = function(req, res, next){
 	res.render('login',{
 		title:'登录页面',
@@ -47,14 +48,14 @@ exports.signin = function(req, res){
 			console.log('请先注册')
 			return false
 		}
-		console.log(user)
 		user.comparePassword(password, function(err, isMatch){
 			if(err){
 				console.log(err)
 			}
 			console.log(isMatch)
 			if(isMatch){
-				console.log('password is matched')
+				req.session.user = user;
+				console.log(req.session.user)
 				return res.redirect('/index');
 			}else{
 				console.log('password is not match')
@@ -63,4 +64,8 @@ exports.signin = function(req, res){
 
 	})
 	
+}
+exports.logout = function(req, res){
+	delete req.session.user
+	return res.redirect('/index');
 }

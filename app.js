@@ -31,6 +31,20 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
+app.use(session({
+    secret: settings.cookieSecret,
+    store: new MongoStore({
+        db: settings.db
+    })
+}));
+//pre handle user
+app.use(function(req, res, next){
+  var user = req.session.user;
+  if(user){
+    res.locals.user = user;
+  } 
+  next()
+})
 //app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static('public'));
 app.use('/',routes);
@@ -41,12 +55,7 @@ models(app);
 //data(app);
 app.use('/',data);
 
-app.use(session({
-    secret: settings.cookieSecret,
-    store: new MongoStore({
-        db: settings.db,
-    })
-}));
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

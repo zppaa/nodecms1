@@ -1,1 +1,11 @@
-欢迎来到MyNodeCMS
+<% if (!locals.user){ %>
+	<div>请您先登录</div>
+	<a href="/user/login" class="pull-left">
+       <span>登录</span>
+    </a>
+    <a href="/user/register" class="pull-left">
+      <span>注册</span>
+    </a>
+<%} else{  %>
+	<div>欢迎<%= user.name%>来到MyNodeCMS</div>
+<% } %>
